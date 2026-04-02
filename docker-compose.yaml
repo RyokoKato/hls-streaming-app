@@ -1,0 +1,80 @@
+services:
+  # Future Work: 技術的に難しかったので後回し
+  # dns:
+  #   build: ./dns
+  #   ports:
+  #     - "53:53"
+  #     - "53:53/udp"
+  #   container_name: dns
+  #   image: dns:latest
+
+  reverse-proxy:
+    build: ./reverse-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    container_name: reverse-proxy
+    image: reverse-proxy:latest
+    volumes:
+      - certbot-etc:/etc/letsencrypt:ro
+    env_file:
+      - .env
+    depends_on:
+      - api
+      - front
+      - streaming
+      - certbot
+  
+  database:
+    build: ./database
+    container_name: database
+    image: database:latest
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+ 
+  api:
+    build: ./api
+    container_name: api
+    image: api:latest
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    env_file:
+      - .env
+    depends_on:
+      database:
+        condition: service_healthy
+   
+  front:
+    build: ./front
+    container_name: front
+    image: front:latest
+    env_file:
+      - .env
+
+  streaming:
+    build: ./streaming
+    container_name: streaming
+    image: streaming:latest
+  
+  certbot:
+    build: ./certbot
+    image: certbot:latest
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - ./certbot/cloudflare.ini:/cloudflare.ini:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    security_opt:
+      - label=disable   # ホストのDockerソケットにアクセスするために追加
+    restart: unless-stopped
+
+volumes:
+  certbot-etc:
