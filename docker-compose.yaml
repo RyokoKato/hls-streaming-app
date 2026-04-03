@@ -72,6 +72,8 @@ services:
       - certbot-etc:/etc/letsencrypt
       - ./certbot/cloudflare.ini:/cloudflare.ini:ro
       - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
+      - .env
     security_opt:
       - label=disable   # ホストのDockerソケットにアクセスするために追加
     restart: unless-stopped
