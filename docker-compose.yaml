@@ -20,10 +20,14 @@ services:
     env_file:
       - .env
     depends_on:
-      - api
-      - front
-      - streaming
-      - certbot
+      certbot:
+        condition: service_healthy
+      api:
+        condition: service_started
+      front:
+        condition: service_started
+      streaming:
+        condition: service_started
   
   database:
     build: ./database
@@ -77,6 +81,11 @@ services:
     security_opt:
       - label=disable   # ホストのDockerソケットにアクセスするために追加
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /etc/letsencrypt/live/${DOMAIN_NAME}/fullchain.pem"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
 
 volumes:
   certbot-etc:
