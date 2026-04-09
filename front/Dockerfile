@@ -10,6 +10,7 @@ COPY ./index.html /usr/share/nginx/data/www/index.html
 COPY ./html/ /usr/share/nginx/data/www/html/
 COPY ./css/ /usr/share/nginx/data/www/css/
 COPY ./js/ /usr/share/nginx/data/www/js/
+COPY ./img/ /usr/share/nginx/data/www/img/
 
 ## Entrypoint
 COPY entrypoint.sh .
