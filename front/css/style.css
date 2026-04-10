@@ -12,8 +12,12 @@
 
 /** tags **/
 /* Background */
-body {
+html {
+    font-size: 100%;
     font-family: "Noto Sans JP";
+}
+
+body {
     background-color: var(--background-secondary);
 }
 
@@ -50,6 +54,7 @@ p {
 .section-header {
     color: #352F59;
     font-size: 2rem;
+    font-weight: 500;   /* Medium */
     text-align: left;
 }
 
@@ -98,6 +103,7 @@ p {
     color: var(--primary);
     text-align: left;
     font-size: 1.5rem;
+    font-weight: 500;   /* Medium */
 
     /* grid */
     grid-row: 2 / 3;
@@ -108,6 +114,7 @@ p {
     color: var(--secondary);
     text-align: left;
     font-size: 1.25rem;
+    font-weight: 400;   /* Regular */
 
     /* grid */
     grid-row: 3 / 4;
