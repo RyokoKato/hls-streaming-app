@@ -11,9 +11,20 @@ async function loadVideos() {
         
         listElement.innerHTML = videos.map(video => `
             <div class="video-card">
-                <img src="${video.thumb}" alt="${video.name}" height="200">
-                <p>${video.name}</p>
-                <button onclick="playVideo('${video.id}')">再生</button>
+                <div class="card-thumbnail">
+                    <img src="${video.thumb}" alt="${video.name}">
+                </div>
+                <div class="card-title">
+                    <p>${video.name}</p>
+                </div>
+                <div class="card-date">
+                    <p>TODO:日付をAPI取得</p>
+                </div>
+                <div class="play-button">
+                    <button onclick="playVideo('${video.id}')">
+                        <img src="img/play.svg" alt="play">
+                    </button>
+                </div>
             </div>
         `).join('');
 

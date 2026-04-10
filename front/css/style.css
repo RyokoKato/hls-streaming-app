@@ -1,0 +1,127 @@
+:root {
+    /** Colors **/
+    --background-primary: #FFFFFF;
+    --background-secondary: #F0F0F2;
+    --primary: #352F59;
+    --secondary: #9E99BF;
+    --fill-primary: #BFBDF2;
+    --fill-secondary: #DDDCF2;
+    --video-background: #000000;
+    --card-shadow: #352F591F;
+}
+
+/** tags **/
+/* Background */
+body {
+    font-family: "Noto Sans JP";
+    background-color: var(--background-secondary);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+/** Components **/
+/* Content View */
+.content {
+    width: 60%;
+    margin: 0 auto;
+
+    /* flex box */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Header */
+.header {
+    background-color: var(--primary);
+    color: var(--background-primary);
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Section Header */
+.section-header {
+    color: #352F59;
+    font-size: 2rem;
+    text-align: left;
+}
+
+/* Grid Container for Cards */
+#video-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(8rem, 1fr));
+    gap: 0.5rem;
+}
+
+/* Card */
+.video-card {
+    padding: 1rem;
+    background-color: var(--background-primary);
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0.25rem 0.25rem var(--card-shadow);
+
+    /* grid */
+    display: grid;
+    grid-template-rows: min-content 1fr auto;
+    grid-template-columns: 1fr 3rem;
+    gap: 0.5rem;
+}
+
+.card-thumbnail {
+    background-color: var(--video-background);
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    /* grid */
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+}
+
+.card-thumbnail > img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+}
+
+.card-title {
+    color: var(--primary);
+    text-align: left;
+    font-size: 1.5rem;
+
+    /* grid */
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+}
+
+.card-date {
+    color: var(--secondary);
+    text-align: left;
+    font-size: 1.25rem;
+
+    /* grid */
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+}
+
+.play-button {
+    /* grid */
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+}
+
+.play-button > button {
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.play-button > button > img {
+    fill: var(--fill-primary);
+    height: 3rem;
+    aspect-ratio: 1 / 1;
+}
