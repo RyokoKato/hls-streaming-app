@@ -66,6 +66,13 @@ p {
     gap: 2rem;
 }
 
+.video-detail {
+    padding: 0;
+    border: none;
+    background: transparent;
+
+}
+
 /* Card */
 .video-card {
     padding: 1rem;
@@ -126,7 +133,7 @@ p {
     grid-column: 1 / 2;
 }
 
-.play-button {
+.play-icon {
     text-align: right;
 
     /* grid */
@@ -134,14 +141,7 @@ p {
     grid-column: 2 / 3;
 }
 
-.play-button > button {
-    aspect-ratio: 1 / 1;
-    padding: 0;
-    border: none;
-    background: transparent;
-}
-
-.play-button > button > img {
+.play-icon > img {
     fill: var(--fill-primary);
     height: 2rem;
     aspect-ratio: 1 / 1;

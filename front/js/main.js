@@ -10,22 +10,22 @@ async function loadVideos() {
         const listElement = document.getElementById('video-list');
         
         listElement.innerHTML = videos.map(video => `
-            <div class="video-card">
-                <div class="card-thumbnail">
-                    <img src="${video.thumb}" alt="${video.name}">
-                </div>
-                <div class="card-title">
-                    <p>${video.name}</p>
-                </div>
-                <div class="card-date">
-                    <p>TODO:日付をAPI取得</p>
-                </div>
-                <div class="play-button">
-                    <button onclick="playVideo('${video.id}')">
+            <button class="video-detail" onclick="playVideo('${video.id}')">
+                <div class="video-card">
+                    <div class="card-thumbnail">
+                        <img src="${video.thumb}" alt="${video.name}">
+                    </div>
+                    <div class="card-title">
+                        <p>${video.name}</p>
+                    </div>
+                    <div class="card-date">
+                        <p>TODO:日付をAPI取得</p>
+                    </div>
+                    <div class="play-icon">
                         <img src="img/play.svg" alt="play">
-                    </button>
+                    </div>
                 </div>
-            </div>
+            </button>
         `).join('');
 
     } catch (error) {
