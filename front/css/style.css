@@ -142,8 +142,8 @@ p {
     grid-column: 2 / 3;
 }
 
-.play-icon > img {
+.play-icon > svg {
     fill: var(--fill-primary);
     height: 2rem;
-    aspect-ratio: 1 / 1;
+    width: 2rem;
 }
