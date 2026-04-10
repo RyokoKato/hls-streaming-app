@@ -2,6 +2,7 @@
     /** Colors **/
     --background-primary: #FFFFFF;
     --background-secondary: #F0F0F2;
+    --background-primary-selected: #E7E6EB;
     --primary: #352F59;
     --secondary: #9E99BF;
     --fill-primary: #BFBDF2;
@@ -79,6 +80,10 @@ p {
     justify-content: end;
     align-items: center;
     gap: 1rem;
+}
+
+.video-card:hover {
+    background-color: var(--background-primary-selected);
 }
 
 .card-thumbnail {
