@@ -81,6 +81,8 @@ p {
     border-radius: 0.5rem;
     box-shadow: 0rem 0.25rem 0.25rem var(--card-shadow);
 
+    width: 100%;
+
     /* grid */
     display: grid;
     grid-template-rows: min-content 1fr auto;
