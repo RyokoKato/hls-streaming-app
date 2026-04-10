@@ -71,6 +71,7 @@ p {
     border: none;
     background: transparent;
 
+    display: flex;
 }
 
 /* Card */
