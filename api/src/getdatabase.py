@@ -1,3 +1,4 @@
+import datetime
 import os
 import psycopg2
 from psycopg2.extras import DictCursor
@@ -31,6 +32,7 @@ def connectDB() -> connection:
 ## - 以下の要素からなるarray
 ### - 動画ID (str)
 ### - 動画タイトル (str)
+### - 動画更新日 (datetime)
 ### - サムネイルURL (str)
 def videolist() -> list[dict[str, str]]:
     with connectDB() as conn:
@@ -42,10 +44,12 @@ def videolist() -> list[dict[str, str]]:
 
             list = []
             for row in rows:
+                createdAt = row['created_at'].strftime("%Y-%m-%d %H:%M:%S")
                 list.append(
                     {
                         "id": row['id'],
                         "name": row['name'],
+                        "created_at": createdAt,
                         "thumb": f"{THUMBNAIL_BASE_PATH}/{row['id']}.jpg"
                     }
                 )
@@ -56,17 +60,20 @@ def videolist() -> list[dict[str, str]]:
 ## returns
 ## - Tuple
 ##   - 動画タイトル (str)
+##   - 動画更新日 (datetime)
 ##   - 動画URL (str)
 def videodetail(id: str) -> dict[str, str]:
     with connectDB() as conn:
         with conn.cursor(cursor_factory=DictCursor) as cur:
-            sql = f"SELECT name FROM videos WHERE id = \'{id}\';"
+            sql = f"SELECT name, created_at FROM videos WHERE id = \'{id}\';"
             cur.execute(sql)
 
             row = cur.fetchone();
 
+            createdAt = row['created_at'].strftime("%Y-%m-%d %H:%M:%S")
             dict = {
-                "name": row["name"],
+                "name": row['name'],
+                "created_at": createdAt,
                 "url": f"{PLAYLIST_BASE_PATH}/{id}/{PLAYLIST_NAME}"
             }
 
