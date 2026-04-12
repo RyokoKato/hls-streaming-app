@@ -20,24 +20,35 @@ async function loadVideos() {
         </svg>
         `;
         
-        listElement.innerHTML = videos.map(video => `
-            <button class="video-detail" onclick="playVideo('${video.id}')">
-                <div class="video-card">
-                    <div class="card-thumbnail">
-                        <img src="${video.thumb}" alt="${video.name}">
+        listElement.innerHTML = videos.map((video) => {
+            let date = new Date(video.created_at);
+
+            // 日付の書式: YYYY/MM/dd
+            let year = date.getFullYear().toString();
+            let month = date.getMonth().toString().padStart(2, '0');
+            let day = date.getDay().toString().padStart(2, '0');
+            let dateText = `${year}/${month}/${day}`
+
+            return `
+                <button class="video-detail" onclick="playVideo('${video.id}')">
+                    <div class="video-card">
+                        <div class="card-thumbnail">
+                            <img src="${video.thumb}" alt="${video.name}">
+                        </div>
+                        <div class="card-title">
+                            <p>${video.name}</p>
+                        </div>
+                        <div class="card-date">
+                            <p>${dateText}</p>
+                        </div>
+                        <div class="play-icon">
+                            ${playButton}
+                        </div>
                     </div>
-                    <div class="card-title">
-                        <p>${video.name}</p>
-                    </div>
-                    <div class="card-date">
-                        <p>TODO:日付をAPI取得</p>
-                    </div>
-                    <div class="play-icon">
-                        ${playButton}
-                    </div>
-                </div>
-            </button>
-        `).join('');
+                </button>
+                `
+            }
+        ).join('');
 
     } catch (error) {
         console.error('Failed to load videos:', error);
