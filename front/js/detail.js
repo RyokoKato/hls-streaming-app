@@ -1,4 +1,5 @@
-import apiConfig from './config.js'
+import apiConfig from './config.js';
+import yyyymmddString from './date.js';
 
 // 動画詳細を読み込む関数
 const params = new URLSearchParams(window.location.search)
@@ -12,6 +13,8 @@ async function loadVideoDetail(videoID) {
         const video = await response.json();
         const listElement = document.getElementById('video-detail');
 
+        let dateText = yyyymmddString(video.created_at)
+
         listElement.innerHTML = `
             <div class="video-detail">
                 <video controls width="600">
@@ -22,7 +25,7 @@ async function loadVideoDetail(videoID) {
                         <p>${video.name}</p>
                     </div>
                     <div class="detail-date">
-                        <p>${video.created_at}</p>
+                        <p>${dateText}</p>
                     </div>
                 </div>
             </div>

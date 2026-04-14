@@ -1,4 +1,5 @@
-import apiConfig from './config.js'
+import apiConfig from './config.js';
+import yyyymmddString from './date.js';
 
 // 動画リストを読み込む関数
 async function loadVideos() {
@@ -21,13 +22,7 @@ async function loadVideos() {
         `;
         
         listElement.innerHTML = videos.map((video) => {
-            let date = new Date(video.created_at);
-
-            // 日付の書式: YYYY/MM/dd
-            let year = date.getFullYear().toString();
-            let month = date.getMonth().toString().padStart(2, '0');
-            let day = date.getDay().toString().padStart(2, '0');
-            let dateText = `${year}/${month}/${day}`
+            let dateText = yyyymmddString(video.created_at);
 
             return `
                 <button class="video-detail" onclick="playVideo('${video.id}')">
