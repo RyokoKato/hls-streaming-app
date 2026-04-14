@@ -14,10 +14,17 @@ async function loadVideoDetail(videoID) {
 
         listElement.innerHTML = `
             <div class="video-detail">
-                <h1>${video.name}</h1>
                 <video controls width="600">
                     <source src="${video.url}" type="application/vnd.apple.mpegurl">
                 </video>
+                <div class="detail-info">
+                    <div class="detail-title">
+                        <p>${video.name}</p>
+                    </div>
+                    <div class="detail-date">
+                        <p>${video.created_at}</p>
+                    </div>
+                </div>
             </div>
         `;
     } catch (error) {
