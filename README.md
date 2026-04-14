@@ -5,11 +5,11 @@
     - [api](api/README.md)
         - streaming サーバーに配置された動画一覧、動画情報詳細を返却するAPIサーバー
     - [front](front/README.md)
-        - HLSを視聴するためのフロントエンドのファイルを格納するサーバー
+        - HLSを視聴するためのフロントエンドのファイルを格納するWebサーバー
     - [streaming](streaming/README.md)
-        - 動画コンテンツ、サムネイルを格納するサーバー
+        - 動画コンテンツ、サムネイルを格納するWebサーバー
     - [database](database/README.md)
-        - 動画情報を返却するAPI
+        - 動画情報を格納するデータベースサーバー
 - サーバー証明書の更新は以下のコンテナで自動的に行う
     - [certbot](certbot/README.md)
 
