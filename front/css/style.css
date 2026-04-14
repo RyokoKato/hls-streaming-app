@@ -44,14 +44,6 @@ p {
     gap: 2rem;
 }
 
-/* Header */
-.header {
-    background-color: var(--primary);
-    color: var(--background-primary);
-    text-align: center;
-    padding: 2rem;
-}
-
 /* Section Header */
 .section-header {
     color: #352F59;
@@ -59,4 +51,3 @@ p {
     font-weight: 500;   /* Medium */
     text-align: left;
 }
-
