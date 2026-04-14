@@ -1,0 +1,14 @@
+/* Header */
+.header {
+    background-color: var(--primary);
+    text-align: center;
+    padding: 2rem;
+}
+
+.logo-button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--background-primary);
+    cursor: pointer;
+}
