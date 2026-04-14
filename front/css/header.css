@@ -10,4 +10,5 @@
     border: none;
     background: transparent;
     color: var(--background-primary);
+    cursor: pointer;
 }
