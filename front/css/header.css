@@ -1,14 +1,16 @@
 /* Header */
 .header {
-    background-color: var(--primary);
-    text-align: center;
-    padding: 2rem;
+    text-align: left;
+    padding: 0;
 }
 
 .logo-button {
     padding: 0;
     border: none;
     background: transparent;
-    color: var(--background-primary);
     cursor: pointer;
+}
+
+.logo-button > svg {
+    height: 7rem;
 }
